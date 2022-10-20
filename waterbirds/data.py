@@ -42,7 +42,7 @@ class WaterbirdsDataset(Dataset):
 
 BATCH_SIZE = args.batch_size
 
-df = pd.read_csv('./waterbird_complete95_forest2water2/metadata.csv') 
+df = pd.read_csv('./data/metadata.csv') 
 train_split = df.loc[df['split'] == 0]
 valid_split = df.loc[df['split'] == 1]
 test_split = df.loc[df['split'] == 2]
@@ -69,15 +69,15 @@ train_landbirds_landbkgd = train_split[train_landbkgd_mask & train_landbirds_mas
 train_waterbirds = train_split[train_waterbirds_mask]
 train_landbirds = train_split[train_landbirds_mask]
 
-train_dataset = WaterbirdsDataset(df=train_split, img_dir='./waterbird_complete95_forest2water2/', transform=custom_transform)
-train_waterbkgd_dataset = WaterbirdsDataset(df=train_waterbkgd, img_dir='./waterbird_complete95_forest2water2/', transform=custom_transform)
-train_landbkgd_dataset = WaterbirdsDataset(df=train_landbkgd, img_dir='./waterbird_complete95_forest2water2/', transform=custom_transform)
-train_waterbirds_waterbkgd_dataset = WaterbirdsDataset(df=train_waterbirds_waterbkgd, img_dir='./waterbird_complete95_forest2water2/', transform=custom_transform)
-train_landbirds_waterbkgd_dataset = WaterbirdsDataset(df=train_landbirds_waterbkgd, img_dir='./waterbird_complete95_forest2water2/', transform=custom_transform)
-train_waterbirds_landbkgd_dataset = WaterbirdsDataset(df=train_waterbirds_landbkgd, img_dir='./waterbird_complete95_forest2water2/', transform=custom_transform)
-train_landbirds_landbkgd_dataset = WaterbirdsDataset(df=train_landbirds_landbkgd, img_dir='./waterbird_complete95_forest2water2/', transform=custom_transform)
-train_waterbirds_dataset = WaterbirdsDataset(df=train_waterbirds, img_dir='./waterbird_complete95_forest2water2/', transform=custom_transform)
-train_landbirds_dataset = WaterbirdsDataset(df=train_landbirds, img_dir='./waterbird_complete95_forest2water2/', transform=custom_transform)
+train_dataset = WaterbirdsDataset(df=train_split, img_dir='./data/', transform=custom_transform)
+train_waterbkgd_dataset = WaterbirdsDataset(df=train_waterbkgd, img_dir='./data/', transform=custom_transform)
+train_landbkgd_dataset = WaterbirdsDataset(df=train_landbkgd, img_dir='./data/', transform=custom_transform)
+train_waterbirds_waterbkgd_dataset = WaterbirdsDataset(df=train_waterbirds_waterbkgd, img_dir='./data/', transform=custom_transform)
+train_landbirds_waterbkgd_dataset = WaterbirdsDataset(df=train_landbirds_waterbkgd, img_dir='./data/', transform=custom_transform)
+train_waterbirds_landbkgd_dataset = WaterbirdsDataset(df=train_waterbirds_landbkgd, img_dir='./data/', transform=custom_transform)
+train_landbirds_landbkgd_dataset = WaterbirdsDataset(df=train_landbirds_landbkgd, img_dir='./data/', transform=custom_transform)
+train_waterbirds_dataset = WaterbirdsDataset(df=train_waterbirds, img_dir='./data/', transform=custom_transform)
+train_landbirds_dataset = WaterbirdsDataset(df=train_landbirds, img_dir='./data/', transform=custom_transform)
 
 
 train_loader = DataLoader(dataset=train_dataset,
@@ -126,8 +126,8 @@ print("Shape of train dataset with Landbkgd: ", train_landbkgd.shape)
 unbiased_train_split  = pd.DataFrame()   
 unbiased_train_landbirds = train_landbirds.sample(n=1113, random_state=1)
 unbiased_train_split = train_waterbirds.append(unbiased_train_landbirds, ignore_index=True)
-unbiased_train_dataset = WaterbirdsDataset(df=unbiased_train_split, img_dir='./waterbird_complete95_forest2water2/', transform=custom_transform)
-unbiased_train_landbirds_dataset = WaterbirdsDataset(df=unbiased_train_landbirds, img_dir='./waterbird_complete95_forest2water2/', transform=custom_transform)
+unbiased_train_dataset = WaterbirdsDataset(df=unbiased_train_split, img_dir='./data/', transform=custom_transform)
+unbiased_train_landbirds_dataset = WaterbirdsDataset(df=unbiased_train_landbirds, img_dir='./data/', transform=custom_transform)
 unbiased_train_loader = DataLoader(dataset=unbiased_train_dataset,
                   batch_size=BATCH_SIZE,
                   shuffle=True,
@@ -155,15 +155,15 @@ valid_landbirds_landbkgd = valid_split[valid_landbkgd_mask & valid_landbirds_mas
 valid_waterbirds = valid_split[valid_waterbirds_mask]
 valid_landbirds = valid_split[valid_landbirds_mask]
 
-valid_dataset = WaterbirdsDataset(df=valid_split, img_dir='./waterbird_complete95_forest2water2/', transform=custom_transform)
-valid_waterbkgd_dataset = WaterbirdsDataset(df=valid_waterbkgd, img_dir='./waterbird_complete95_forest2water2/', transform=custom_transform)
-valid_landbkgd_dataset = WaterbirdsDataset(df=valid_landbkgd, img_dir='./waterbird_complete95_forest2water2/', transform=custom_transform)
-valid_waterbirds_waterbkgd_dataset = WaterbirdsDataset(df=valid_waterbirds_waterbkgd, img_dir='./waterbird_complete95_forest2water2/', transform=custom_transform)
-valid_landbirds_waterbkgd_dataset = WaterbirdsDataset(df=valid_landbirds_waterbkgd, img_dir='./waterbird_complete95_forest2water2/', transform=custom_transform)
-valid_waterbirds_landbkgd_dataset = WaterbirdsDataset(df=valid_waterbirds_landbkgd, img_dir='./waterbird_complete95_forest2water2/', transform=custom_transform)
-valid_landbirds_landbkgd_dataset = WaterbirdsDataset(df=valid_landbirds_landbkgd, img_dir='./waterbird_complete95_forest2water2/', transform=custom_transform)
-valid_waterbirds_dataset = WaterbirdsDataset(df=valid_waterbirds, img_dir='./waterbird_complete95_forest2water2/', transform=custom_transform)
-valid_landbirds_dataset = WaterbirdsDataset(df=valid_landbirds, img_dir='./waterbird_complete95_forest2water2/', transform=custom_transform)
+valid_dataset = WaterbirdsDataset(df=valid_split, img_dir='./data/', transform=custom_transform)
+valid_waterbkgd_dataset = WaterbirdsDataset(df=valid_waterbkgd, img_dir='./data/', transform=custom_transform)
+valid_landbkgd_dataset = WaterbirdsDataset(df=valid_landbkgd, img_dir='./data/', transform=custom_transform)
+valid_waterbirds_waterbkgd_dataset = WaterbirdsDataset(df=valid_waterbirds_waterbkgd, img_dir='./data/', transform=custom_transform)
+valid_landbirds_waterbkgd_dataset = WaterbirdsDataset(df=valid_landbirds_waterbkgd, img_dir='./data/', transform=custom_transform)
+valid_waterbirds_landbkgd_dataset = WaterbirdsDataset(df=valid_waterbirds_landbkgd, img_dir='./data/', transform=custom_transform)
+valid_landbirds_landbkgd_dataset = WaterbirdsDataset(df=valid_landbirds_landbkgd, img_dir='./data/', transform=custom_transform)
+valid_waterbirds_dataset = WaterbirdsDataset(df=valid_waterbirds, img_dir='./data/', transform=custom_transform)
+valid_landbirds_dataset = WaterbirdsDataset(df=valid_landbirds, img_dir='./data/', transform=custom_transform)
 
 valid_loader = DataLoader(dataset=valid_dataset,
                  batch_size=BATCH_SIZE,
@@ -229,15 +229,15 @@ test_landbirds_landbkgd = test_split[test_landbkgd_mask & test_landbirds_mask]
 test_waterbirds = test_split[test_waterbirds_mask]
 test_landbirds = test_split[test_landbirds_mask]
 
-test_dataset = WaterbirdsDataset(df=test_split, img_dir='./waterbird_complete95_forest2water2/', transform=custom_transform)
-test_waterbkgd_dataset = WaterbirdsDataset(df=test_waterbkgd, img_dir='./waterbird_complete95_forest2water2/', transform=custom_transform)
-test_landbkgd_dataset = WaterbirdsDataset(df=test_landbkgd, img_dir='./waterbird_complete95_forest2water2/', transform=custom_transform)
-test_waterbirds_waterbkgd_dataset = WaterbirdsDataset(df=test_waterbirds_waterbkgd, img_dir='./waterbird_complete95_forest2water2/', transform=custom_transform)
-test_landbirds_waterbkgd_dataset = WaterbirdsDataset(df=test_landbirds_waterbkgd, img_dir='./waterbird_complete95_forest2water2/', transform=custom_transform)
-test_waterbirds_landbkgd_dataset = WaterbirdsDataset(df=test_waterbirds_landbkgd, img_dir='./waterbird_complete95_forest2water2/', transform=custom_transform)
-test_landbirds_landbkgd_dataset = WaterbirdsDataset(df=test_landbirds_landbkgd, img_dir='./waterbird_complete95_forest2water2/', transform=custom_transform)
-test_waterbirds_dataset = WaterbirdsDataset(df=test_waterbirds, img_dir='./waterbird_complete95_forest2water2/', transform=custom_transform)
-test_landbirds_dataset = WaterbirdsDataset(df=test_landbirds, img_dir='./waterbird_complete95_forest2water2/', transform=custom_transform)
+test_dataset = WaterbirdsDataset(df=test_split, img_dir='./data/', transform=custom_transform)
+test_waterbkgd_dataset = WaterbirdsDataset(df=test_waterbkgd, img_dir='./data/', transform=custom_transform)
+test_landbkgd_dataset = WaterbirdsDataset(df=test_landbkgd, img_dir='./data/', transform=custom_transform)
+test_waterbirds_waterbkgd_dataset = WaterbirdsDataset(df=test_waterbirds_waterbkgd, img_dir='./data/', transform=custom_transform)
+test_landbirds_waterbkgd_dataset = WaterbirdsDataset(df=test_landbirds_waterbkgd, img_dir='./data/', transform=custom_transform)
+test_waterbirds_landbkgd_dataset = WaterbirdsDataset(df=test_waterbirds_landbkgd, img_dir='./data/', transform=custom_transform)
+test_landbirds_landbkgd_dataset = WaterbirdsDataset(df=test_landbirds_landbkgd, img_dir='./data/', transform=custom_transform)
+test_waterbirds_dataset = WaterbirdsDataset(df=test_waterbirds, img_dir='./data/', transform=custom_transform)
+test_landbirds_dataset = WaterbirdsDataset(df=test_landbirds, img_dir='./data/', transform=custom_transform)
 
 test_loader = DataLoader(dataset=test_dataset,
                  batch_size=BATCH_SIZE,
