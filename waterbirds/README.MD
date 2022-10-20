@@ -1,3 +1,16 @@
+## Prerequisites
+
+- python 3.7.8
+- h5py 3.2.1
+- hdf5 1.10.6
+- matplotlib 3.2.2
+- numpy 1.20.1
+- pandas 1.1.3
+- pytorch 1.7.1
+- pytorch-transformers 1.2.0
+- torchvision 0.8.2
+- tqdm 4.62.0
+
 ## Dataset and Code
 
 ### Waterbirds Dataset
