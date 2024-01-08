@@ -85,12 +85,10 @@ class CelebaDataset(Dataset):
 
     def __init__(self, df, img_dir, transform=None):
     
-        #df = pd.read_csv(csv_path, index_col=0)
         self.img_dir = img_dir
-        #self.csv_path = csv_path
         self.img_names = df['image_id'].values
         self.y = df['Blond_Hair'].values
-        self.attri = df['Male'].values
+        self.attribute = df['Male'].values
         self.transform = transform
 
     def __getitem__(self, index):
@@ -101,10 +99,10 @@ class CelebaDataset(Dataset):
             img = self.transform(img)
 
         name = self.img_names[index]
-        attri = self.attri[index]
+        attribute = self.attribute[index]
         label = self.y[index]
         
-        return img, name, attri, label
+        return img, name, attribute, label
 
     def __len__(self):
         return self.y.shape[0]
